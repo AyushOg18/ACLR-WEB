@@ -55,3 +55,5 @@ pip-delete-this-directory.txt
 *.db
 *.sqlite
 *.sqlite3
+
+backend/.venv/
