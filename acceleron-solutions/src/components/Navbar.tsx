@@ -166,8 +166,8 @@ export default function Navbar() {
                 href="/contact"
                 className={`border px-6 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] transition-all ${
                   scrolled
-                    ? "border-[#252F61] bg-[#252F61] text-white hover:bg-white hover:text-[#252F61]"
-                    : "border-white bg-white text-[#252F61] hover:bg-transparent hover:text-white"
+                    ? "border-[#252F61] bg-[#252F61] !text-white hover:bg-white hover:!text-[#252F61]"
+                    : "border-white bg-white !text-[#252F61] hover:bg-transparent hover:!text-white"
                 }`}
               >
                 Get in touch
