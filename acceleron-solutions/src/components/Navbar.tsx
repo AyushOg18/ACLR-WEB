@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Menu, Search, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/data";
@@ -12,6 +13,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 28);
@@ -36,33 +38,30 @@ export default function Navbar() {
     timeoutRef.current = setTimeout(() => setActiveDropdown(null), 120);
   };
 
-  const textColor = scrolled ? "text-[#252F61]" : "text-white";
+  const isHome = pathname === "/";
+  const isNavbarScrolled = scrolled || !isHome;
+  const textColor = isNavbarScrolled ? "text-[#252F61]" : "text-white";
 
   return (
     <>
       <nav
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "border-b border-[#252F61]/10 bg-white/88 py-4 shadow-[0_18px_60px_rgba(37,47,97,0.06)] backdrop-blur-xl"
+          isNavbarScrolled
+            ? "border-b border-[#252F61]/10 bg-white/95 py-4 shadow-[0_18px_60px_rgba(37,47,97,0.06)] backdrop-blur-xl"
             : "bg-transparent py-6"
         }`}
       >
         <div className="page-container">
           <div className="flex h-12 items-center justify-between gap-8">
-            <Link href="/" className="flex items-center gap-3" aria-label="Acceleron Solutions home">
-              <span className={`grid h-10 w-10 place-items-center border text-sm font-black ${
-                scrolled ? "border-[#252F61] bg-[#252F61] text-white" : "border-white/40 bg-white/10 text-white"
-              }`}>
-                A
-              </span>
-              <span className="flex flex-col leading-none">
-                <span className={`text-sm font-extrabold tracking-wide ${textColor}`} style={{ color: scrolled ? "#252F61" : "#FFFFFF" }}>Acceleron</span>
-                <span className={`mt-1 text-[9px] font-bold uppercase tracking-[0.32em] ${
-                  scrolled ? "text-[#252F61]/55" : "text-white/58"
-                }`}>
-                  Solutions
-                </span>
-              </span>
+            <Link href="/" className="flex items-center" aria-label="Acceleron Solutions home">
+              <img 
+                src="/logo.png" 
+                alt="Acceleron Solutions" 
+                className="h-9 w-auto object-contain transition-all duration-300"
+                style={{ 
+                  filter: isNavbarScrolled ? "none" : "brightness(0) invert(1)" 
+                }}
+              />
             </Link>
 
             <div className="hidden items-center gap-7 xl:flex">
@@ -75,8 +74,8 @@ export default function Navbar() {
                 >
                   {link.children ? (
                     <button
-                      className={`group flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${textColor}`}
-                      style={{ color: scrolled ? "#252F61" : "#FFFFFF" }}
+                      className={`group flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${textColor} hover:opacity-80`}
+                      style={{ color: isNavbarScrolled ? "#252F61" : "#FFFFFF" }}
                       type="button"
                     >
                       {link.label}
@@ -86,19 +85,19 @@ export default function Navbar() {
                           activeDropdown === link.label ? "rotate-180" : ""
                         }`}
                       />
-                      <span className={`absolute -bottom-2 left-0 h-px w-0 transition-all duration-300 group-hover:w-full ${
-                        scrolled ? "bg-[#252F61]" : "bg-white"
+                      <span className={`absolute -bottom-1.5 left-1/2 h-[2px] w-0 -translate-x-1/2 transition-all duration-350 ease-[0.16,1,0.3,1] group-hover:w-full ${
+                        isNavbarScrolled ? "bg-[#252F61]" : "bg-white"
                       }`} />
                     </button>
                   ) : (
                     <Link
                       href={link.href}
-                      className={`group relative text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${textColor}`}
-                      style={{ color: scrolled ? "#252F61" : "#FFFFFF" }}
+                      className={`group relative text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${textColor} hover:opacity-80`}
+                      style={{ color: isNavbarScrolled ? "#252F61" : "#FFFFFF" }}
                     >
                       {link.label}
-                      <span className={`absolute -bottom-2 left-0 h-px w-0 transition-all duration-300 group-hover:w-full ${
-                        scrolled ? "bg-[#252F61]" : "bg-white"
+                      <span className={`absolute -bottom-1.5 left-1/2 h-[2px] w-0 -translate-x-1/2 transition-all duration-350 ease-[0.16,1,0.3,1] group-hover:w-full ${
+                        isNavbarScrolled ? "bg-[#252F61]" : "bg-white"
                       }`} />
                     </Link>
                   )}
@@ -106,23 +105,25 @@ export default function Navbar() {
                   <AnimatePresence>
                     {link.children && activeDropdown === link.label && (
                       <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 12 }}
-                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute left-1/2 top-full mt-8 w-[820px] -translate-x-1/2 border border-[#252F61]/10 bg-white shadow-[0_30px_90px_rgba(17,24,39,0.14)]"
+                        initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                        transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                        className="absolute left-1/2 top-full mt-5 w-[820px] -translate-x-1/2 border border-[#252F61]/8 bg-white/95 backdrop-blur-xl shadow-[0_32px_80px_rgba(37,47,97,0.1)] rounded-lg overflow-hidden"
                         onMouseEnter={() => openDropdown(link.label)}
                         onMouseLeave={closeDropdown}
                       >
                         <div className="grid grid-cols-[0.9fr_1.4fr]">
-                          <div className="bg-[#F5F7FB] p-8">
-                            <span className="eyebrow mb-5">Explore</span>
-                            <h3 className="text-2xl font-extrabold leading-tight text-[#252F61]">
-                              {link.label} for enterprise transformation
-                            </h3>
-                            <p className="mt-5 text-sm leading-7 text-[#647084]">
-                              Structured capabilities, deep domain context and accountable delivery for business-critical programs.
-                            </p>
+                          <div className="bg-[#F5F7FB] p-8 flex flex-col justify-between">
+                            <div>
+                              <span className="eyebrow mb-5">Explore</span>
+                              <h3 className="text-2xl font-extrabold leading-tight text-[#252F61]">
+                                {link.label} for enterprise transformation
+                              </h3>
+                              <p className="mt-5 text-sm leading-7 text-[#647084]">
+                                Structured capabilities, deep domain context and accountable delivery for business-critical programs.
+                              </p>
+                            </div>
                             <Link
                               href={link.href}
                               className="premium-link mt-10"
@@ -131,18 +132,19 @@ export default function Navbar() {
                               Overview <span><ArrowRight size={14} /></span>
                             </Link>
                           </div>
-                          <div className="grid grid-cols-2 gap-x-8 gap-y-7 p-8">
+                          <div className="grid grid-cols-2 gap-x-4 gap-y-3 p-6 max-h-[420px] overflow-y-auto">
                             {link.children.map((child) => (
                               <Link
                                 key={child.label}
                                 href={child.href}
-                                className="group border-t border-[#252F61]/10 pt-4"
+                                className="group rounded-lg p-3.5 transition-all duration-300 hover:bg-[#252F61]/5"
                                 onClick={() => setActiveDropdown(null)}
                               >
-                                <span className="block text-sm font-extrabold text-[#252F61] transition-colors group-hover:text-[#252F61]/70">
+                                <span className="block text-[13px] font-extrabold text-[#252F61] transition-colors group-hover:text-[#252F61] flex items-center gap-1.5">
                                   {child.label}
+                                  <ArrowRight size={12} className="opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#252F61]" />
                                 </span>
-                                <span className="mt-2 block text-xs leading-5 text-[#647084]">
+                                <span className="mt-1 block text-[11px] leading-relaxed text-[#647084]">
                                   {child.desc}
                                 </span>
                               </Link>
@@ -158,16 +160,16 @@ export default function Navbar() {
 
             <div className="hidden items-center gap-4 xl:flex">
               <button className={`grid h-10 w-10 place-items-center border transition-colors ${
-                scrolled ? "border-[#252F61]/12 text-[#252F61] hover:bg-[#F5F7FB]" : "border-white/25 text-white hover:bg-white/10"
+                isNavbarScrolled ? "border-[#252F61]/12 text-[#252F61] hover:bg-[#F5F7FB]" : "border-white/25 text-white hover:bg-white/10"
               }`} aria-label="Search">
                 <Search size={16} />
               </button>
               <Link
                 href="/contact"
                 className={`border px-6 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] transition-all ${
-                  scrolled
-                    ? "border-[#252F61] bg-[#252F61] text-white hover:bg-white hover:text-[#252F61]"
-                    : "border-white bg-white text-[#252F61] hover:bg-transparent hover:text-white"
+                  isNavbarScrolled
+                    ? "border-[#252F61] bg-[#252F61] !text-white hover:bg-white hover:!text-[#252F61]"
+                    : "border-white bg-white !text-[#252F61] hover:bg-transparent hover:!text-white"
                 }`}
               >
                 Get in touch
@@ -176,7 +178,7 @@ export default function Navbar() {
 
             <button
               className={`grid h-11 w-11 place-items-center border xl:hidden ${
-                scrolled ? "border-[#252F61]/14 text-[#252F61]" : "border-white/30 text-white"
+                isNavbarScrolled ? "border-[#252F61]/14 text-[#252F61]" : "border-white/30 text-white"
               }`}
               onClick={() => setMobileOpen(true)}
               aria-label="Open navigation menu"

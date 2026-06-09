@@ -106,6 +106,22 @@ export const SERVICES = [
     href: "/services/cyber-security",
     features: ["VAPT", "ISO 27001", "Endpoint", "Forensics"],
   },
+  {
+    id: "cxo-advisory",
+    title: "CXO Advisory",
+    tagline: "Strategic guidance",
+    desc: "Technology roadmaps, IT-business alignment, architecture reviews, and strategic investment guidance for scaling organizations.",
+    href: "/services/cxo-advisory",
+    features: ["Tech Roadmaps", "IT Alignment", "Architecture", "Governance"],
+  },
+  {
+    id: "analytics",
+    title: "Analytics",
+    tagline: "Data-driven decisions",
+    desc: "Data lakes, warehousing, BI visualization dashboards, reporting, and intelligence systems built for operations.",
+    href: "/services/analytics",
+    features: ["Data Lakes", "Warehousing", "Dashboards", "Reporting"],
+  },
 ];
 
 export const INDUSTRIES = [
@@ -126,12 +142,36 @@ export const INDUSTRIES = [
     stat: "Factory intelligence",
   },
   {
+    id: "capital-goods",
+    title: "Capital goods",
+    desc: "Engineering sales, after-sales operations, product lifecycle support, and service process modernization.",
+    href: "/industries/capital-goods",
+    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/manufacturing.jpg",
+    stat: "Asset lifecycle focus",
+  },
+  {
     id: "logistics",
     title: "Transportation & logistics",
     desc: "Planning, dispatch, asset, route and fulfillment systems for logistics teams that run under pressure.",
     href: "/industries/logistics",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/logistics.jpg",
     stat: "Network resilience",
+  },
+  {
+    id: "utilities",
+    title: "Utilities",
+    desc: "Asset health monitoring, transmission analytics, utility management systems, and smart grid visibility.",
+    href: "/industries/utilities",
+    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/mining.jpg",
+    stat: "Grid uptime focus",
+  },
+  {
+    id: "engineering",
+    title: "Engineering & construction",
+    desc: "EPC project execution systems, asset planning, cost controls, and real-time project management.",
+    href: "/industries/engineering",
+    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/logistics.jpg",
+    stat: "Project execution depth",
   },
 ];
 
@@ -178,6 +218,30 @@ export const PRODUCTS = [
     desc: "Lead capture and opportunity management integrated with SAP to support quotes, orders and invoicing.",
     href: "/products/lms",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/3.png",
+  },
+  {
+    id: "woms",
+    title: "WOMS",
+    subtitle: "Work order management system",
+    desc: "Work order orchestration across field operations, service scheduling, resource allocation, and job execution tracking.",
+    href: "/products/woms",
+    image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/2.png",
+  },
+  {
+    id: "suraksha",
+    title: "Suraksha",
+    subtitle: "Safety & incident app",
+    desc: "Incident reporting, SOS alerts, safety compliance checklists, and real-time field team safety coordination.",
+    href: "/products/suraksha",
+    image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/3.png",
+  },
+  {
+    id: "qms",
+    title: "QMS",
+    subtitle: "Quality management system",
+    desc: "Quality assurance workflows, workshop tracking, defect inspection logs, and auditing tools for industrial operations.",
+    href: "/products/qms",
+    image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/4.png",
   },
 ];
 

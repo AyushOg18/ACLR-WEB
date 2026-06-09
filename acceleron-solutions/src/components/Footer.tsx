@@ -62,7 +62,7 @@ export default function Footer() {
       <div className="page-container">
         <div className="grid gap-12 border-b border-white/14 py-16 lg:grid-cols-[0.85fr_1fr] lg:py-20">
           <div>
-            <div className="text-2xl font-extrabold tracking-normal">Acceleron Solutions</div>
+            <img src="/logo.png" alt="Acceleron Solutions" className="h-10 w-auto object-contain brightness-0 invert" />
             <p className="mt-6 max-w-lg text-sm leading-7 text-white/62">
               Enterprise technology consulting, packaged software implementation, custom engineering, infrastructure and cyber security. Part of the Gainwell Group.
             </p>

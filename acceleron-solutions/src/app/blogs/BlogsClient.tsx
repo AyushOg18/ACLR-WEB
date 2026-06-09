@@ -30,7 +30,7 @@ export default function BlogsClient() {
                   <span className="text-[9px] uppercase font-bold tracking-widest text-blue-300 block mb-2">
                     {featured.category} &middot; {featured.readTime}
                   </span>
-                  <span className="text-xs text-blue-200/40">{featured.date}</span>
+                  <span className="text-xs text-blue-200/40">{featured.readTime}</span>
                 </div>
               </div>
               {/* Content block */}
