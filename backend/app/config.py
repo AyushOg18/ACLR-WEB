@@ -1,5 +1,11 @@
+import os
 from pydantic import BaseSettings
 from typing import List
+from dotenv import load_dotenv
+
+# Resolve path relative to app/ directory
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(os.path.join(base_dir, ".env"))
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Acceleron Solutions API"
@@ -17,3 +23,4 @@ class Settings(BaseSettings):
         case_sensitive = True
 
 settings = Settings()
+
