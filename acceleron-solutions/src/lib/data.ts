@@ -1,3 +1,11 @@
+import { INDUSTRIES as INDUSTRY_MENU_ITEMS } from "@/features/industries/data/industries";
+
+const INDUSTRY_MENU = INDUSTRY_MENU_ITEMS.map((industry) => ({
+  label: industry.title,
+  href: industry.href,
+  desc: industry.menuDesc,
+}));
+
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -30,14 +38,7 @@ export const NAV_LINKS = [
   {
     label: "Industries",
     href: "/industries",
-    children: [
-      { label: "Mining", href: "/industries/mining", desc: "Digital operations for safety, productivity and visibility" },
-      { label: "Discrete Manufacturing", href: "/industries/manufacturing", desc: "Smart factory systems and production intelligence" },
-      { label: "Capital Goods", href: "/industries/capital-goods", desc: "Engineering, sales and service process modernization" },
-      { label: "Transportation & Logistics", href: "/industries/logistics", desc: "Fleet, routes, supply chain and service execution" },
-      { label: "Utilities", href: "/industries/utilities", desc: "Infrastructure monitoring and utility management systems" },
-      { label: "Engineering & Construction", href: "/industries/engineering", desc: "EPC project execution and construction operations" },
-    ],
+    children: INDUSTRY_MENU,
   },
   { label: "Insights", href: "/blogs" },
   { label: "Careers", href: "/careers" },
@@ -106,74 +107,9 @@ export const SERVICES = [
     href: "/services/cyber-security",
     features: ["VAPT", "ISO 27001", "Endpoint", "Forensics"],
   },
-  {
-    id: "cxo-advisory",
-    title: "CXO Advisory",
-    tagline: "Strategic guidance",
-    desc: "Technology roadmaps, IT-business alignment, architecture reviews, and strategic investment guidance for scaling organizations.",
-    href: "/services/cxo-advisory",
-    features: ["Tech Roadmaps", "IT Alignment", "Architecture", "Governance"],
-  },
-  {
-    id: "analytics",
-    title: "Analytics",
-    tagline: "Data-driven decisions",
-    desc: "Data lakes, warehousing, BI visualization dashboards, reporting, and intelligence systems built for operations.",
-    href: "/services/analytics",
-    features: ["Data Lakes", "Warehousing", "Dashboards", "Reporting"],
-  },
 ];
 
-export const INDUSTRIES = [
-  {
-    id: "mining",
-    title: "Mining",
-    desc: "Connected operating models for production visibility, equipment availability, compliance and field safety.",
-    href: "/industries/mining",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/mining.jpg",
-    stat: "Safety-first operations",
-  },
-  {
-    id: "manufacturing",
-    title: "Discrete manufacturing",
-    desc: "ERP, analytics and shop-floor systems that help manufacturers align demand, production and service.",
-    href: "/industries/manufacturing",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/manufacturing.jpg",
-    stat: "Factory intelligence",
-  },
-  {
-    id: "capital-goods",
-    title: "Capital goods",
-    desc: "Engineering sales, after-sales operations, product lifecycle support, and service process modernization.",
-    href: "/industries/capital-goods",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/manufacturing.jpg",
-    stat: "Asset lifecycle focus",
-  },
-  {
-    id: "logistics",
-    title: "Transportation & logistics",
-    desc: "Planning, dispatch, asset, route and fulfillment systems for logistics teams that run under pressure.",
-    href: "/industries/logistics",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/logistics.jpg",
-    stat: "Network resilience",
-  },
-  {
-    id: "utilities",
-    title: "Utilities",
-    desc: "Asset health monitoring, transmission analytics, utility management systems, and smart grid visibility.",
-    href: "/industries/utilities",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/mining.jpg",
-    stat: "Grid uptime focus",
-  },
-  {
-    id: "engineering",
-    title: "Engineering & construction",
-    desc: "EPC project execution systems, asset planning, cost controls, and real-time project management.",
-    href: "/industries/engineering",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/logistics.jpg",
-    stat: "Project execution depth",
-  },
-];
+export const INDUSTRIES = INDUSTRY_MENU_ITEMS;
 
 export const WHY_ACCELERON = [
   {
@@ -219,30 +155,6 @@ export const PRODUCTS = [
     href: "/products/lms",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/3.png",
   },
-  {
-    id: "woms",
-    title: "WOMS",
-    subtitle: "Work order management system",
-    desc: "Work order orchestration across field operations, service scheduling, resource allocation, and job execution tracking.",
-    href: "/products/woms",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/2.png",
-  },
-  {
-    id: "suraksha",
-    title: "Suraksha",
-    subtitle: "Safety & incident app",
-    desc: "Incident reporting, SOS alerts, safety compliance checklists, and real-time field team safety coordination.",
-    href: "/products/suraksha",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/3.png",
-  },
-  {
-    id: "qms",
-    title: "QMS",
-    subtitle: "Quality management system",
-    desc: "Quality assurance workflows, workshop tracking, defect inspection logs, and auditing tools for industrial operations.",
-    href: "/products/qms",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/4.png",
-  },
 ];
 
 export const TESTIMONIALS = [
@@ -281,6 +193,7 @@ export const BLOGS = [
     href: "/blogs/sustainable-supply-chain",
     category: "Supply Chain",
     readTime: "5 min read",
+    date: "Jun 3, 2025",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/blog1.jpg",
   },
   {
@@ -291,6 +204,7 @@ export const BLOGS = [
     href: "/blogs/digitization-mining",
     category: "Mining",
     readTime: "7 min read",
+    date: "Jul 10, 2025",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/blog2.jpg",
   },
   {
@@ -301,6 +215,7 @@ export const BLOGS = [
     href: "/blogs/future-of-work",
     category: "Digital Transformation",
     readTime: "8 min read",
+    date: "Aug 21, 2025",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/66e83673c8aecb3687fcc680_Hero-Digital-Literacy-A-Non-Ne.jpg",
   },
 ];
@@ -318,4 +233,22 @@ export const TECH_PARTNERS = [
   "Python",
   "Power BI",
   "Azure",
+];
+
+export const CLIENTS = [
+  "Parasea Coal Mine Project",
+  "Gainwell Engineering",
+  "Tulip Compression",
+  "Aurora Resources",
+  "Evergreen Mining",
+  "Vector Components",
+  "Nexus Manufacturing",
+  "Helios Logistics",
+  "Parcelway Solutions",
+  "NorthGrid Energy",
+  "BlueWave Utilities",
+  "Atlas Construct",
+  "Nexa Build",
+  "CoreTech Systems",
+  "Helix Machinery",
 ];

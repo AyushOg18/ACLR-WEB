@@ -32,11 +32,11 @@ export default function IndustriesSection() {
               <div className="relative z-10 flex h-full min-h-[520px] flex-col justify-between p-8 text-white">
                 <div className="flex items-center justify-between text-[10px] font-extrabold uppercase tracking-[0.22em] text-white/62">
                   <span>0{index + 1}</span>
-                  <span>{industry.stat}</span>
+                  <span>{industry.stats?.[0]?.label ?? industry.menuDesc}</span>
                 </div>
                 <div>
                   <h3 className="text-3xl font-extrabold leading-tight">{industry.title}</h3>
-                  <p className="mt-5 text-sm leading-7 text-white/70">{industry.desc}</p>
+                  <p className="mt-5 text-sm leading-7 text-white/70">{industry.menuDesc}</p>
                   <Link href={industry.href} className="mt-8 inline-flex items-center gap-3 text-xs font-extrabold uppercase tracking-[0.18em] text-white">
                     Sector brief <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                   </Link>

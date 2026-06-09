@@ -40,7 +40,7 @@ export default function IndustriesClient() {
                   </div>
                   <div className="col-span-10 sm:col-span-5">
                     <p className="text-xs text-gray-400 leading-relaxed">
-                      {industry.desc}
+                      {industry.menuDesc}
                     </p>
                   </div>
                   <div className="col-span-2 sm:col-span-2 text-right">
