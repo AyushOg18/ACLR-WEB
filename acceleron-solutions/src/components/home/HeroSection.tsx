@@ -6,6 +6,19 @@ import { ArrowRight } from "lucide-react";
 import { HERO_STATS } from "@/lib/data";
 
 export default function HeroSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
     <section className="relative flex min-h-screen items-end overflow-hidden bg-[#252F61] pb-12 pt-32 text-white lg:pb-16">
       <div
@@ -53,19 +66,26 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center gap-3 bg-white px-7 py-4 text-xs font-extrabold uppercase tracking-[0.18em] transition-colors hover:bg-[#F5F7FB]"
-                style={{ color: "#252F61" }}
-              >
-                Explore capabilities <ArrowRight size={15} />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center border border-white/35 px-7 py-4 text-xs font-extrabold uppercase tracking-[0.18em] text-white transition-colors hover:border-white hover:bg-white/8"
-              >
-                Talk to our experts
-              </Link>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center justify-center gap-3 bg-white px-7 py-4 text-xs font-extrabold uppercase tracking-[0.18em] transition-colors hover:bg-[#F5F7FB]"
+                  style={{ color: "#252F61" }}
+                >
+                  Explore capabilities
+                  <motion.div animate={{ x: [0, 4, 0] }} transition={{ duration: 0.6, repeat: Infinity }}>
+                    <ArrowRight size={15} />
+                  </motion.div>
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center border border-white/35 px-7 py-4 text-xs font-extrabold uppercase tracking-[0.18em] text-white transition-colors hover:border-white hover:bg-white/8"
+                >
+                  Talk to our experts
+                </Link>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -74,14 +94,28 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
+            variants={containerVariants}
           >
             {HERO_STATS.map((stat) => (
-              <div key={stat.label} className="min-h-36 border-b border-r border-white/12 p-6 last:border-r-0 odd:border-r">
-                <div className="text-3xl font-extrabold tracking-normal text-white sm:text-4xl">{stat.value}</div>
-                <p className="mt-4 text-[11px] font-bold uppercase leading-5 tracking-[0.16em] text-white/58">
+              <motion.div
+                key={stat.label}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                className="min-h-36 border-b border-r border-white/12 p-6 last:border-r-0 odd:border-r transition-colors"
+              >
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="text-3xl font-extrabold tracking-normal text-white sm:text-4xl"
+                >
+                  {stat.value}
+                </motion.div>
+                <p className="mt-3 text-[11px] font-extrabold uppercase leading-4 tracking-[0.12em] text-white/64">
                   {stat.label}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>

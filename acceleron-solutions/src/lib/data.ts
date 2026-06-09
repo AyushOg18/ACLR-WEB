@@ -1,3 +1,11 @@
+import { INDUSTRIES as INDUSTRY_MENU_ITEMS } from "@/features/industries/data/industries";
+
+const INDUSTRY_MENU = INDUSTRY_MENU_ITEMS.map((industry) => ({
+  label: industry.title,
+  href: industry.href,
+  desc: industry.menuDesc,
+}));
+
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -30,14 +38,7 @@ export const NAV_LINKS = [
   {
     label: "Industries",
     href: "/industries",
-    children: [
-      { label: "Mining", href: "/industries/mining", desc: "Digital operations for safety, productivity and visibility" },
-      { label: "Discrete Manufacturing", href: "/industries/manufacturing", desc: "Smart factory systems and production intelligence" },
-      { label: "Capital Goods", href: "/industries/capital-goods", desc: "Engineering, sales and service process modernization" },
-      { label: "Transportation & Logistics", href: "/industries/logistics", desc: "Fleet, routes, supply chain and service execution" },
-      { label: "Utilities", href: "/industries/utilities", desc: "Infrastructure monitoring and utility management systems" },
-      { label: "Engineering & Construction", href: "/industries/engineering", desc: "EPC project execution and construction operations" },
-    ],
+    children: INDUSTRY_MENU,
   },
   { label: "Insights", href: "/blogs" },
   { label: "Careers", href: "/careers" },
@@ -108,32 +109,7 @@ export const SERVICES = [
   },
 ];
 
-export const INDUSTRIES = [
-  {
-    id: "mining",
-    title: "Mining",
-    desc: "Connected operating models for production visibility, equipment availability, compliance and field safety.",
-    href: "/industries/mining",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/mining.jpg",
-    stat: "Safety-first operations",
-  },
-  {
-    id: "manufacturing",
-    title: "Discrete manufacturing",
-    desc: "ERP, analytics and shop-floor systems that help manufacturers align demand, production and service.",
-    href: "/industries/manufacturing",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/manufacturing.jpg",
-    stat: "Factory intelligence",
-  },
-  {
-    id: "logistics",
-    title: "Transportation & logistics",
-    desc: "Planning, dispatch, asset, route and fulfillment systems for logistics teams that run under pressure.",
-    href: "/industries/logistics",
-    image: "https://acceleronsolutions.io/wp-content/uploads/2024/01/logistics.jpg",
-    stat: "Network resilience",
-  },
-];
+export const INDUSTRIES = INDUSTRY_MENU_ITEMS;
 
 export const WHY_ACCELERON = [
   {
@@ -217,6 +193,7 @@ export const BLOGS = [
     href: "/blogs/sustainable-supply-chain",
     category: "Supply Chain",
     readTime: "5 min read",
+    date: "Jun 3, 2025",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/blog1.jpg",
   },
   {
@@ -227,6 +204,7 @@ export const BLOGS = [
     href: "/blogs/digitization-mining",
     category: "Mining",
     readTime: "7 min read",
+    date: "Jul 10, 2025",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/blog2.jpg",
   },
   {
@@ -237,6 +215,7 @@ export const BLOGS = [
     href: "/blogs/future-of-work",
     category: "Digital Transformation",
     readTime: "8 min read",
+    date: "Aug 21, 2025",
     image: "https://acceleronsolutions.io/wp-content/uploads/2024/09/66e83673c8aecb3687fcc680_Hero-Digital-Literacy-A-Non-Ne.jpg",
   },
 ];
@@ -254,4 +233,22 @@ export const TECH_PARTNERS = [
   "Python",
   "Power BI",
   "Azure",
+];
+
+export const CLIENTS = [
+  "Parasea Coal Mine Project",
+  "Gainwell Engineering",
+  "Tulip Compression",
+  "Aurora Resources",
+  "Evergreen Mining",
+  "Vector Components",
+  "Nexus Manufacturing",
+  "Helios Logistics",
+  "Parcelway Solutions",
+  "NorthGrid Energy",
+  "BlueWave Utilities",
+  "Atlas Construct",
+  "Nexa Build",
+  "CoreTech Systems",
+  "Helix Machinery",
 ];

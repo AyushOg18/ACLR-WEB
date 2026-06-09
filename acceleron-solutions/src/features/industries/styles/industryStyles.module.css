@@ -1,0 +1,16 @@
+.industryHeroGlow {
+  background: radial-gradient(circle at top right, rgba(59, 74, 158, 0.24), transparent 45%);
+}
+
+.industryOutline {
+  border-color: rgba(59, 74, 158, 0.15);
+}
+
+.industryAccentLink {
+  transition: color 0.24s ease, transform 0.24s ease;
+}
+
+.industryAccentLink:hover {
+  color: #3b4a9e;
+  transform: translateX(2px);
+}
