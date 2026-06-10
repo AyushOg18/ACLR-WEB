@@ -18,8 +18,9 @@ class ContactSubmissionResponse(ContactSubmissionBase):
     id: int
     created_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        "from_attributes": True,
+    }
 
 
 # Newsletter Schemas
@@ -32,8 +33,9 @@ class NewsletterSubscriberResponse(BaseModel):
     is_active: bool
     created_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        "from_attributes": True,
+    }
 
 
 # Careers Schemas
@@ -55,8 +57,9 @@ class CareersApplicationResponse(BaseModel):
     resume_url: Optional[str]
     created_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        "from_attributes": True,
+    }
 
 
 # Blog Schemas
@@ -88,5 +91,6 @@ class BlogPostResponse(BlogPostBase):
     created_at: datetime
     updated_at: Optional[datetime] = None
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        "from_attributes": True,
+    }
