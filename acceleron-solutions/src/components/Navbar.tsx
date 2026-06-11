@@ -64,23 +64,23 @@ export default function Navbar() {
               />
             </Link>
 
-            <div className="hidden items-center gap-7 xl:flex">
+            <div className="hidden items-center gap-8 xl:flex h-full">
               {NAV_LINKS.map((link) => (
                 <div
                   key={link.label}
-                  className="relative"
+                  className="relative flex items-center h-full"
                   onMouseEnter={() => link.children && openDropdown(link.label)}
                   onMouseLeave={link.children ? closeDropdown : undefined}
                 >
                   {link.children ? (
                     <button
-                      className={`group flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${textColor} hover:opacity-80`}
+                      className={`group flex items-center gap-1.5 text-[15px] font-medium tracking-normal transition-colors ${textColor} hover:text-[#252F61]/80 py-2`}
                       style={{ color: isNavbarScrolled ? "#252F61" : "#FFFFFF" }}
                       type="button"
                     >
                       {link.label}
                       <ChevronDown
-                        size={13}
+                        size={15}
                         className={`transition-transform duration-300 ${
                           activeDropdown === link.label ? "rotate-180" : ""
                         }`}
@@ -92,7 +92,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
-                      className={`group relative text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${textColor} hover:opacity-80`}
+                      className={`group relative flex items-center text-[15px] font-medium tracking-normal transition-colors ${textColor} hover:text-[#252F61]/80 py-2`}
                       style={{ color: isNavbarScrolled ? "#252F61" : "#FFFFFF" }}
                     >
                       {link.label}
