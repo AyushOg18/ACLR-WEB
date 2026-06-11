@@ -8,7 +8,7 @@ import WhyAcceleronSection from "@/components/home/WhyAcceleronSection";
 import ProductsSection from "@/components/home/ProductsSection";
 import TechStackSection from "@/components/home/TechStackSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import BlogsSection from "@/components/home/BlogsSection";
+import InsightsSection from "@/components/home/InsightsSection";
 import CTASection from "@/components/home/CTASection";
 
 export default function HomePage() {
@@ -24,7 +24,7 @@ export default function HomePage() {
       <ProductsSection />
       <TechStackSection />
       <TestimonialsSection />
-      <BlogsSection />
+      <InsightsSection />
       <CTASection />
     </>
   );
