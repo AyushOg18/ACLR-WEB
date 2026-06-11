@@ -4,9 +4,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import EnhancedCard from "@/components/ui/EnhancedCard";
-import { BLOGS } from "@/lib/data";
+import { INSIGHTS } from "@/lib/data";
 
-export default function BlogsSection() {
+export default function InsightsSection() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -16,7 +16,7 @@ export default function BlogsSection() {
   };
 
   return (
-    <section className="section-y bg-[#F5F7FB]" id="blogs">
+    <section className="section-y bg-[#F5F7FB]" id="insights">
       <div className="page-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,10 +27,10 @@ export default function BlogsSection() {
         >
           <div className="max-w-3xl">
             <span className="eyebrow mb-5">Insights</span>
-            <h2 className="heading-md text-balance">Latest thinking from the world of Acceleron.</h2>
+            <h2 className="heading-md text-balance">Executive research and industry perspective for enterprise leaders.</h2>
           </div>
-          <Link href="/blogs" className="premium-link group flex items-center gap-2">
-            All articles
+          <Link href="/insights" className="premium-link group flex items-center gap-2">
+            Explore insights
             <motion.span
               animate={{ x: [0, 4, 0] }}
               transition={{ duration: 0.6, repeat: Infinity }}
@@ -48,9 +48,9 @@ export default function BlogsSection() {
           viewport={{ once: true, margin: "-60px" }}
           className="grid gap-8 lg:grid-cols-3"
         >
-          {BLOGS.slice(0, 3).map((blog, index) => (
-            <EnhancedCard key={blog.id} index={index} className="overflow-hidden">
-              <Link href={blog.href} className="group block h-full flex flex-col">
+          {INSIGHTS.slice(0, 3).map((insight, index) => (
+            <EnhancedCard key={insight.id} index={index} className="overflow-hidden">
+              <Link href={insight.href} className="group block h-full flex flex-col">
                 {/* Image container with hover effect */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -59,7 +59,7 @@ export default function BlogsSection() {
                 >
                   <div
                     className="h-full w-full bg-cover bg-center"
-                    style={{ backgroundImage: `url('${blog.image}')` }}
+                    style={{ backgroundImage: `url('${insight.image}')` }}
                   />
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -67,6 +67,10 @@ export default function BlogsSection() {
                     transition={{ duration: 0.3 }}
                     className="absolute inset-0 bg-gradient-to-t from-[#252F61]/40 to-transparent"
                   />
+                  {/* Content Type Badge */}
+                  <div className="absolute top-4 left-4 rounded-full bg-[#252F61] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
+                    {insight.type}
+                  </div>
                 </motion.div>
 
                 {/* Content */}
@@ -79,12 +83,12 @@ export default function BlogsSection() {
                       transition={{ delay: 0.2 }}
                       className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#3B4A9E]"
                     >
-                      {blog.category} / {blog.readTime}
+                      {insight.category} / {insight.readTime}
                     </motion.span>
                     <h3 className="mt-5 text-2xl font-extrabold leading-tight text-[#252F61] group-hover:text-[#3B4A9E] transition">
-                      {blog.title}
+                      {insight.title}
                     </h3>
-                    <p className="mt-4 text-sm leading-7 text-[#647084]">{blog.excerpt}</p>
+                    <p className="mt-4 text-sm leading-7 text-[#647084]">{insight.excerpt}</p>
                   </div>
 
                   {/* CTA */}

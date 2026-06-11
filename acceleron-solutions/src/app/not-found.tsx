@@ -72,7 +72,7 @@ export default function NotFound() {
                 { label: "About", href: "/about" },
                 { label: "Industries", href: "/industries" },
                 { label: "Careers", href: "/careers" },
-                { label: "Blogs", href: "/blogs" },
+                { label: "Insights", href: "/insights" },
                 { label: "Contact", href: "/contact" },
               ].map((link) => (
                 <Link

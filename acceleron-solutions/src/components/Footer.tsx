@@ -22,7 +22,7 @@ const columns = [
       ["About", "/about"],
       ["Products", "/products"],
       ["Industries", "/industries"],
-      ["Insights", "/blogs"],
+      ["Insights", "/insights"],
       ["Careers", "/careers"],
       ["Contact", "/contact"],
     ],

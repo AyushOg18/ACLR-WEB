@@ -11,9 +11,10 @@ class Settings(BaseSettings):
     # CORS Origins
     BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000", "https://acceleronsolutions.io"]
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
-        case_sensitive = True
+    model_config = {
+        "env_file": ".env",
+        "env_file_encoding": "utf-8",
+        "case_sensitive": True,
+    }
 
 settings = Settings()
